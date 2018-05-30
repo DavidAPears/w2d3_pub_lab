@@ -16,7 +16,8 @@ class CustomerTest < Minitest::Test
     @drink2= Drink.new("Beer", 1, 4)
     @drink3= Drink.new("Whisky", 5, 40)
     @drink4= Drink.new("Gin", 4, 20)
-    # @pub2 = Pub.new("Standing Order", 200, [@drink1, @drink2, @drink3, @drink4])
+
+    @pub2 = Pub.new("Standing Order", 200, [@drink1, @drink2, @drink3, @drink4])
   end
 
   def test_name
@@ -28,8 +29,10 @@ class CustomerTest < Minitest::Test
   end
 
   def test_buy_drink
-    @customer1.buy_drink(@drink1)
+    @customer1.buy_drink(@pub2, @drink1)
     assert_equal(15, @customer1.drunkenness)
+    assert_equal(48, @customer1.wallet)
+    assert_equal(202, @pub2.till)
   end
 
 
