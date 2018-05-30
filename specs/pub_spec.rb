@@ -24,4 +24,11 @@ class PubTest < Minitest::Test
     assert_equal(4, @pub2.drinks.length)
   end
 
+  def test_allows_purchase
+    assert_equal(false, @pub1.allows_purchase(12, 20))
+    assert_equal(false, @pub1.allows_purchase(19, 120))
+    assert_equal(true, @pub1.allows_purchase(19, 30))
+
+  end
+
 end

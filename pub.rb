@@ -10,4 +10,13 @@ class Pub
   end
 
 
+  def allows_purchase(age, drunkenness)
+    if (age >= 18 && drunkenness < 100)
+      return true
+    else
+      return false
+    end
+
+  end
+
 end

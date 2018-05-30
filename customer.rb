@@ -11,20 +11,27 @@ class Customer
   end
 
   def buy_drink(pub, drink)
+    if(pub.allows_purchase(@age, @drunkenness))
+      @drunkenness += drink.alcohol_level
+      @wallet -= drink.price
+      pub.till += drink.price
+    else
+    p "Sorry can't serve you"
+    end
+  end
 
-    @drunkenness += drink.alcohol_level
-    @wallet -= drink.price
-    pub.till += drink.price
+
+  def buy_food(pub, food)
+
+    @drunkenness -= food.rej_level
+    if(@drunkenness<0)
+      @drunkenness=0
+    end
+    @wallet -= food.price
+    pub.till += food.price
 
   end
 
-    def buy_food(pub, food)
-      @drunkenness -= food.rej_level
-      if(@drunkenness<0)
-        @drunkenness=0
-      end
-      @wallet -= food.price
-      pub.till += food.price
 
-    end
+
 end
