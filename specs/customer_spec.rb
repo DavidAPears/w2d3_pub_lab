@@ -11,12 +11,15 @@ class CustomerTest < Minitest::Test
 
     @customer1=Customer.new("David", 50, 39, 2)
     @customer2=Customer.new("Can", 30, 33, 5)
-    # @pub1 = Pub.new("The Bonnington", 100, [])
+    @pub1 = Pub.new("The Bonnington", 100, [])
     @drink1= Drink.new("Red Wine", 2, 13)
     @drink2= Drink.new("Beer", 1, 4)
     @drink3= Drink.new("Whisky", 5, 40)
     @drink4= Drink.new("Gin", 4, 20)
-
+    @food1 = Food.new("Burger", 4, 10)
+    @food2 = Food.new("Pie", 2, 20)
+    @food3 = Food.new("Pizza", 5, 30)
+    @food4 = Food.new("Salad", 6, 3)
     @pub2 = Pub.new("Standing Order", 200, [@drink1, @drink2, @drink3, @drink4])
   end
 
@@ -35,5 +38,11 @@ class CustomerTest < Minitest::Test
     assert_equal(202, @pub2.till)
   end
 
+  def test_buy_food
+    @customer1.buy_food(@pub1, @food1)
+    assert_equal(0, @customer1.drunkenness)
+    assert_equal(46, @customer1.wallet)
+    assert_equal(104, @pub1.till)
+  end
 
 end
