@@ -14,6 +14,8 @@ class PubTest < Minitest::Test
     @drink3= Drink.new("Whisky", 5, 40)
     @drink4= Drink.new("Gin", 4, 20)
     @pub2 = Pub.new("Standing Order", 200, [@drink1, @drink2, @drink3, @drink4])
+    @customer1=Customer.new("David", 50, 39, 2)
+    @customer2=Customer.new("Can", 30, 33, 5)
   end
 
   def test_name
@@ -25,9 +27,11 @@ class PubTest < Minitest::Test
   end
 
   def test_allows_purchase
-    assert_equal(false, @pub1.allows_purchase(12, 20))
-    assert_equal(false, @pub1.allows_purchase(19, 120))
-    assert_equal(true, @pub1.allows_purchase(19, 30))
+    assert_equal(false, @pub1.allows_purchase(12, 20, @customer1.wallet, 1))
+    assert_equal(false, @pub1.allows_purchase(19, 120, @customer1.wallet, 1))
+    assert_equal(true, @pub1.allows_purchase(19, 30, @customer1.wallet, 1))
+    assert_equal(false, @pub1.allows_purchase(19, 30, @customer1.wallet, 500))
+
 
   end
 
