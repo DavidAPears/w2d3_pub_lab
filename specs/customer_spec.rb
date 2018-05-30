@@ -36,6 +36,7 @@ class CustomerTest < Minitest::Test
     assert_equal(15, @customer1.drunkenness)
     assert_equal(48, @customer1.wallet)
     assert_equal(202, @pub2.till)
+    assert_equal(24, @pub2.stock[@drink1])
   end
 
   def test_buy_food

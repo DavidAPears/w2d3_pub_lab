@@ -1,7 +1,7 @@
 class Customer
 
   attr_reader :name, :wallet, :drunkenness
-  # attr_accessor :till
+
 
   def initialize (name, wallet, age, drunkenness)
     @name = name
@@ -15,17 +15,14 @@ class Customer
       @drunkenness += drink.alcohol_level
       @wallet -= drink.price
       pub.till += drink.price
-      #
-      #
-      # if(pub.stock.has_key?(drink.name))
-      #   p "YES"
-      # end
 
-
-
+      if(pub.stock.has_key?(drink))
+        pub.stock[drink] -= 1
+        p pub.stock[drink]
+      end
 
     else
-    p "Sorry can't serve you"
+      p "Sorry can't serve you"
     end
   end
 
