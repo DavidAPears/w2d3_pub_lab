@@ -20,7 +20,7 @@ class CustomerTest < Minitest::Test
     @food2 = Food.new("Pie", 2, 20)
     @food3 = Food.new("Pizza", 5, 30)
     @food4 = Food.new("Salad", 6, 3)
-    @pub2 = Pub.new("Standing Order", 200, [@drink1, @drink2, @drink3, @drink4])
+    @pub2 = Pub.new("Standing Order", 200, {@drink1 => 25, @drink2=> 25, @drink3=> 25, @drink4=> 25})
   end
 
   def test_name
@@ -36,7 +36,7 @@ class CustomerTest < Minitest::Test
     assert_equal(15, @customer1.drunkenness)
     assert_equal(48, @customer1.wallet)
     assert_equal(202, @pub2.till)
-    assert_equal(24, @pub2.stock[@drink1])
+    assert_equal(24, @pub2.drinks[@drink1])
   end
 
   def test_buy_food

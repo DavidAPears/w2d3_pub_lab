@@ -11,11 +11,14 @@ class Customer
   end
 
   def buy_drink(pub, drink)
-    if(pub.allows_purchase(@age, @drunkenness, wallet, drink.price) && pub.stock.has_key?(drink) && pub.stock[drink]>0)
+    p pub.drinks.class
+    p pub.drinks[0].class
+
+    if(pub.allows_purchase(@age, @drunkenness, wallet, drink.price) && pub.drinks.has_key?(drink) && pub.drinks[drink]>0)
         @drunkenness += drink.alcohol_level
         @wallet -= drink.price
         pub.till += drink.price
-        pub.stock[drink] -= 1
+        pub.drinks[drink] -= 1
       else
         p "Sorry we are unable to serve you"
       end

@@ -3,16 +3,16 @@ class Pub
   attr_reader :name, :drinks
   attr_accessor :till, :stock
 
-  def initialize (name, till, drinks = [])
+  def initialize (name, till, drinks = {})
     @name = name
     @till = till
     @drinks = drinks
-    @stock = {
-      @drinks[0] => 25,
-      @drinks[1] => 25,
-      @drinks[2] => 25,
-      @drinks[3] => 25,
-            }
+    # @stock = {
+    #   @drinks[0] => 25,
+    #   @drinks[1] => 25,
+    #   @drinks[2] => 25,
+    #   @drinks[3] => 25,
+    #         }
   end
 
 
@@ -31,8 +31,8 @@ class Pub
 
     def stock_value
       total_value=0
-      for booze in @stock.keys()
-        total_value += (booze.price() * @stock[booze])
+      for booze in @drinks.keys()
+        total_value += (booze.price() * @drinks[booze])
       end
       return total_value
     end
