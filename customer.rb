@@ -11,7 +11,7 @@ class Customer
   end
 
   def buy_drink(pub, drink)
-    if(pub.allows_purchase(@age, @drunkenness))
+    if(pub.allows_purchase(@age, @drunkenness, wallet, drink.price))
       @drunkenness += drink.alcohol_level
       @wallet -= drink.price
       pub.till += drink.price
@@ -26,6 +26,7 @@ class Customer
     @drunkenness -= food.rej_level
     if(@drunkenness<0)
       @drunkenness=0
+      p "You're now sober"
     end
     @wallet -= food.price
     pub.till += food.price
