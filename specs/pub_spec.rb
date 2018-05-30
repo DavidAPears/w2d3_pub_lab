@@ -20,6 +20,8 @@ class PubTest < Minitest::Test
     assert_equal("The Bonnington", @pub1.name)
   end
 
-
+  def test_check_drinks
+    assert_equal(4, @pub2.drinks.length)
+  end
 
 end
