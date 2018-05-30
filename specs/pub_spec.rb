@@ -31,8 +31,22 @@ class PubTest < Minitest::Test
     assert_equal(false, @pub1.allows_purchase(19, 120, @customer1.wallet, 1))
     assert_equal(true, @pub1.allows_purchase(19, 30, @customer1.wallet, 1))
     assert_equal(false, @pub1.allows_purchase(19, 30, @customer1.wallet, 500))
-
-
   end
+
+  def test_stock_value
+
+    assert_equal(300, @pub2.stock_value)
+  end
+
+
+
+
+
+
+
+
+
+
+
 
 end

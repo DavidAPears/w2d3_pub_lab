@@ -15,6 +15,15 @@ class Customer
       @drunkenness += drink.alcohol_level
       @wallet -= drink.price
       pub.till += drink.price
+      #
+      #
+      # if(pub.stock.has_key?(drink.name))
+      #   p "YES"
+      # end
+
+
+
+
     else
     p "Sorry can't serve you"
     end
