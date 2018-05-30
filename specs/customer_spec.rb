@@ -45,4 +45,20 @@ class CustomerTest < Minitest::Test
     assert_equal(104, @pub1.till)
   end
 
+  def test_buy_food_drink
+    @customer1.buy_drink(@pub2, @drink3)
+    @customer1.buy_food(@pub2, @food4)
+    assert_equal(39, @customer1.drunkenness)
+    assert_equal(211, @pub2.till)
+  end
+
+
+
+
+
+
+
+
+
+
 end
